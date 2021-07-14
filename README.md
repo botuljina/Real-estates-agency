@@ -22,3 +22,7 @@ open cmd:
 NoSQL
 install MongoDB
 install Robo3T
+
+<p align="center">
+  <img src="/Pocetna.PNG">
+</p>
