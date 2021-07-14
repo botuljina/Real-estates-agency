@@ -15,7 +15,7 @@ run agular:
 BACKEND 
 
 open cmd:
-  2) cd backend (position in backend folder)
+  0) cd backend (position in backend folder)
   1) tsc
   2) npm run serve
 -------------------------
