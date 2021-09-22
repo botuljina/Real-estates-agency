@@ -1,0 +1,69 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h3 class="display-10" style="text-align: center;">DODAJ NEKRETNINU</h3>
+       <hr class="my-4" style="color: white;">
+       <form class="form my-2 my-lg-0">
+        <input [(ngModel)]="nekretnina.naziv" name="naziv" id="naziv" class="form-control mr-sm-2" type="text" placeholder="NAZIV" >
+        <br/>
+        <input [(ngModel)]="nekretnina.grad" name="grad" id="grad" class="form-control mr-sm-2" type="text" placeholder="GRAD" >
+        <br/>
+        <input [(ngModel)]="nekretnina.opstina" name="opstina" id="opstina" class="form-control mr-sm-2" type="text" placeholder="OPSTINA" >
+        <br/>
+        <input [(ngModel)]="nekretnina.ulica"  name="ulica" id="ulica" class="form-control mr-sm-1" type="text" placeholder="ULICA" >
+        <br/>
+        <div class="row">
+            <div class="col">
+                <select [(ngModel)]="nekretnina.tip" name="tip" class="form-select" id="exampleSelect1" style="width:100%;height:100%">
+                    <option value="zgrada" selected>Zgrada</option>
+                    <option value="kuca">Kuca</option>
+                </select>
+            </div>
+        </div>
+       
+        <br/>
+        <input [(ngModel)]='nekretnina.brojSpratova' name="brojSpratova" id="brojSpratova" class="form-control mr-sm-1" type="number" placeholder="BROJ SPRATOVA" >
+        <br/>
+        <div *ngIf="nekretnina.tip=='zgrada'">
+            <input [(ngModel)]='nekretnina.sprat' name="sprat" id="sprat" class="form-control mr-sm-1" type="number" placeholder="SPRAT" >
+            <br/>
+        </div>
+        <input [(ngModel)]="nekretnina.kvadratura"  name="kvadratura" id="kvadratura" class="form-control mr-sm-1" type="number" placeholder="KVADRATURA" >
+        <br/>
+        <input [(ngModel)]="nekretnina.brojSoba"  name="brojSoba" id="brojSoba" class="form-control mr-sm-1" type="number" placeholder="BROJ SOBA" >
+        <br/>
+        <div class="row">
+            <div class="col">
+                <select [(ngModel)]="nekretnina.jeNamestena" name="jeNamestena" class="form-select" aria-label="Default select example" style="width:100%;height:100%">
+                    <option value="true">Nekretnina je namestena</option>
+                    <option value="false">Nekretnina nije namestena</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <input name="slika" type="file" class="form-control" multiple (change)="handleFileInput($event.target.files)">
+        <br/>
+        <div class="row">
+            <div class="col">
+                <select [(ngModel)]="nekretnina.usluga" name="usluga" class="form-select" aria-label="Default select example" style="width:100%;height:100%">
+                    <option value="prodaja" selected>Prodaja</option>
+                    <option value="rent">Rent</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <input [(ngModel)]="nekretnina.cena" name="drzava" id="drzava" class="form-control mr-sm-1" type="number" placeholder="CENA" >
+        <br/>
+        <input [(ngModel)]="nekretnina.vlasnik" name="drzava" id="drzava" class="form-control mr-sm-1" type="text" placeholder="VLASNIK" readonly>
+        <br/>
+        <button id="dodajNekretninu" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='dodajNekretninu()'>DODAJ NEKRETNINU</button>
+        <br/>
+        <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+            {{poruka}}
+        </span>
+        <span style=" text-align:center; display: block; margin: 0 auto; color: green;">
+            {{porukaSucces}}
+        </span>
+      </form>
+     
+    </div>
+  </div>

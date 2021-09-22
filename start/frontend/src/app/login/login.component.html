@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-5" style="text-align: center;">PRIJAVA</h1>
+       <hr class="my-4">
+       <form class="form my-2 my-lg-0">
+        <input [(ngModel)]="username" name="username" id="usernameField" class="form-control mr-sm-2" type="text" placeholder="USERNAME" >
+        <br/>
+        <input [(ngModel)]='password' name="password" id="passwdField" class="form-control mr-sm-2" type="password" placeholder="PASSWORD" >
+        <br/>
+        <button id="loginButton" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='login()'>LOGIN</button>
+        <br/>
+        <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+            {{poruka}}
+        </span>
+      </form>
+     
+    </div>
+</div>

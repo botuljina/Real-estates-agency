@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-5" style="text-align: center;">PORUKE</h1>
+       <hr class="my-4">
+       <form class="form my-2 my-lg-0">
+        <div class="row">      
+            <br/>
+            <div class="col" >
+                <button id="changePregledSvihPoruka" type="submit" class="btn btn-success" style="width:50%; display: block; margin: 0 auto;" (click)='changepregledSvihPoruka()'>KONVERZACIJE</button>
+            </div>
+            <div class="col">
+                <button id="changeNovaPoruka" type="submit" class="btn btn-success" style="width:50%; display: block; margin: 0 auto;" (click)='changeNovaPoruka()'>NOVA PORUKA</button>
+            </div>
+            <div class="col">
+                <button id="changeArhiva" type="submit" class="btn btn-warning" style="width:50%; display: block; margin: 0 auto;" (click)="changeArhiva()">ARHIVA</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<div *ngIf="pregledSvihPoruka==true">
+    <app-poruka-pregled-chatova></app-poruka-pregled-chatova>
+</div>
+<div *ngIf="novaPoruka==true">
+    <app-poruka-dodaj></app-poruka-dodaj>
+</div>
+
+<div *ngIf="arhiva==true">
+    <app-poruka-pregled-arhiva></app-poruka-pregled-arhiva>
+</div>

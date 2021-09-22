@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-5" style="text-align: center;">MOJE NEKRETNINE</h1>
+       <hr class="my-4">
+       <form class="form my-2 my-lg-0">
+        <div class="row">      
+            <br/>
+            <div class="col" *ngIf="user.type == 'agent' || user.type == 'admin'">
+                <button id="changePregledSvihNekretnina" type="submit" class="btn btn-success" style="width:50%; display: block; margin: 0 auto;" (click)='changepregledSvihNekretnina()'>PREGLED SVIH NEKRETNINA</button>
+            </div>
+            <div class="col">
+                <button id="changepregledNekretnina" type="submit" class="btn btn-success" style="width:50%; display: block; margin: 0 auto;" (click)='changepregledNekretnina()'>PREGLED MOJIH NEKRETNINA</button>
+            </div>
+            <div class="col">
+                <button id="loginButton" type="submit" class="btn btn-warning" style="width:50%; display: block; margin: 0 auto;" (click)="changedodajNekretninu()">DODAJ NOVU NEKRETNINU</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<div *ngIf="pregledSvihNekretnina==true">
+    <app-sve-nekretnine-pregled-tabelarni></app-sve-nekretnine-pregled-tabelarni>
+</div>
+<div *ngIf="dodajNekretninu==true">
+    <app-dodaj-nekretninu></app-dodaj-nekretninu>
+</div>
+
+<div *ngIf="pregledNekretnina==true">
+    <app-moje-nekretnine-pregled></app-moje-nekretnine-pregled>
+</div>

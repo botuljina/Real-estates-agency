@@ -1,0 +1,89 @@
+
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+     
+    <div class="container mt-4">
+      <div class="jumbotron" style="position: relative;background-color: 	#707070;">
+          <h1 class="display-5" style="text-align: center;">BLOK</h1>
+          <hr class="my-4">
+          <form class="form my-2 my-lg-0">
+          <input [(ngModel)]="userZaBlok" name="username" id="usernameField" class="form-control mr-sm-2" type="text" placeholder="USERNAME" >
+          <br/>
+          <div class="row">
+            <div class="col">
+              <button id="loginButton" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)="blokiraj()">BLOKIRAJ</button>
+            </div>
+            <div class="col">
+              <button id="loginButton2" type="submit" class="btn btn-info" style=" display: block; margin: 0 auto;" (click)="odblokiraj()">ODBLOKIRAJ</button>
+            </div>
+          </div>
+          <br/>
+        </form>
+        
+      </div>
+    </div>
+    <br/>  
+
+    <h3 style="text-align: center; color: white;">SPISAK SVIH KONVERZACIJA</h3>
+    <hr class="my-4">
+      <table class="table table-hover" style="text-align: center;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">NASLOV</th>
+            <th scope="col">PRODAVAC</th>
+            <th scope="col">KUPAC</th>
+            <th scope="col">STANJE</th>
+            <th scope="col">OPCIJE</th>
+          </tr>
+        </thead>
+    
+          <tbody>
+            <tr class="table-active" *ngFor="let chat of konverzacije;let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{chat.naslov}}</td>
+              <td>{{chat.prodavac}}</td>
+              <td>{{chat.kupac}}</td>
+              <td>{{chat.stanje}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-sm" >
+                    <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="pregled(chat.id)">PREGLED</button>
+                  </div>
+                  <div class="col-sm" >
+                    <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="arhiva(chat.id)">ARHIVA</button>
+                  </div>
+                  <div class="col-sm" *ngIf='chat.kupac==user.username && visibleInput[i]==true'>
+                    <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="ponuda(chat.nekretninaId,i,chat.id)" [disabled]="visibleInput[i]==false || chat.jePrihvacena=='true'">POSALJI</button>
+                  </div>
+                  <div class="col-sm" *ngIf='chat.kupac==user.username && visibleInput[i]==true' >
+                    <input [(ngModel)]="cenaPonude[i]" name="username" id="usernameField" class="form-control mr-sm-2" type="text" placeholder="Iznos ponude" >
+                  </div>
+
+                  <div class="col-sm" *ngIf='chat.prodavac==user.username && visibleInput[i]==true'>
+                    <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="prihvati(chat.id)" [disabled]="visibleInput[i]==false || chat.jePrihvacena=='true'">PRIHVATI</button>
+                  </div>
+
+                  <div class="col-sm" *ngIf='chat.prodavac==user.username && visibleInput[i]==true'>
+                    <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="odbij(chat.id)" [disabled]="visibleInput[i]==false || chat.jePrihvacena=='true'">ODBIJ</button>
+                  </div>
+
+                  <div class="col-sm" *ngIf='chat.prodavac==user.username && visibleInput[i]==true'>
+                    <input [(ngModel)]="cenaPonude[i]" name="username" id="usernameField" class="form-control mr-sm-2" type="text" placeholder="Iznos ponude" >
+                  </div>
+                  
+                  
+                  
+                </div>   
+               
+              </td>
+            </tr>  
+          </tbody>
+       
+        
+      </table>
+      <br>
+    </div>
+  <!-- On rows -->
+    
+  </div>

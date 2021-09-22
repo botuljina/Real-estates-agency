@@ -1,0 +1,189 @@
+
+<br/>
+<br/>
+<div class="container" *ngIf="nekretnina != null">
+    <div class="row" >
+      <div class="col-sm">
+          <div class="card mb-1">
+            <h3 class="card-header" style="text-align: center;">{{nekretnina.naziv}}</h3>
+         
+              <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+          
+            
+            <div class="card-body">
+              <p class="card-text">Grad - {{nekretnina.grad}} | Opstina - {{nekretnina.opstina}} | Ulica - {{nekretnina.ulica}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Tip - {{nekretnina.tip}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='kuca'">Broj spratova kuce - {{nekretnina.brojSpratova}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='kuca'">Broj sprata stana - xxx</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='zgrada'">Broj spratova zgrade - {{nekretnina.brojSpratova}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='zgrada'">Broj sprata stana - {{nekretnina.sprat}}</li>
+              <li class="list-group-item">Kvadratura - {{nekretnina.kvadratura}} m2</li>
+              <li class="list-group-item">Broj soba - {{nekretnina.brojSoba}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.jeNamestena==true">
+                Namestena - 
+                <span class="badge bg-success" style="color:white">DA</span>
+              </li>
+              <li class="list-group-item" *ngIf="nekretnina.jeNamestena==false">
+                Namestena - 
+                <span class="badge bg-danger" style="color:white">NE</span>
+              </li>
+              <li class="list-group-item">Usluga - {{nekretnina.usluga}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.usluga=='prodaja'">Cena prodaja - {{nekretnina.cena}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.usluga=='rent'">Cena za 24h - {{nekretnina.cena}}</li>
+            </ul>
+            <div class="card-body" style="text-align: center;">
+              <a href="https://www.medicalife.rs/" class="card-link" >Vlasnik - {{nekretnina.vlasnik}}</a>
+            </div>
+          </div>
+          
+      </div>    
+    </div>
+</div>
+<div *ngIf="nekretnina != null">
+    <div class="container mt-4" *ngIf="nekretnina.usluga=='rent'">
+        <div class="jumbotron" style="position: relative;">
+           <h1 class="display-10" style="text-align: center;">FORMA ZA IZNAJMLJIVANJE</h1>
+           <hr class="my-4">
+           <form class="form my-2 my-lg-0">
+            <div class="row" style="text-align: center;">      
+                <br/>
+                <div class="col">
+                    DATUM OD
+                </div>
+                <div class="col">
+                    DATUM DO
+                </div>
+                <div class="col">
+                    CENA ZA 24H
+                </div>
+            </div>
+            <br/>
+            <div class="row">      
+              <br/>
+              <div class="col">
+                <input [(ngModel)]="datumOd" name="datumOd" id="datumOd" class="form-control" type="date" placeholder="GRAD" >
+              </div>
+              <div class="col">
+                <input [(ngModel)]="datumDo" name="datumDo" id="datumDo" class="form-control mr-sm-2" type="date" placeholder="OPSTINA" >
+              </div>
+              <div class="col">
+                <input [(ngModel)]="nekretnina.cena" name="ulica" id="ulica" class="form-control mr-sm-2" type="text" readonly>
+              </div>
+            </div>
+            <br/>
+            <button id="pretragaButton" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='iznajmi()'>Iznajmi</button>
+
+            <br/>
+            <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+                {{poruka}}
+            </span>
+            <span style=" text-align:center; display: block; margin: 0 auto; color: green;">
+              {{porukaSuccess}}
+          </span>
+          </form>    
+        </div>
+        <div class="row">         
+          <div class="col" style="text-align: center;">
+            <button type="button" class="btn btn-success">
+                <h3 class="display-10" style="text-align: center;" (click)="kontaktiraj()">Kontaktiraj vlasnika</h3>
+            </button> 
+          </div>
+        </div>
+        <br/>
+    </div>
+</div>
+<div *ngIf="nekretnina != null">
+    <div class="container mt-4" *ngIf="nekretnina.usluga=='prodaja'">
+        <div class="jumbotron" style="position: relative;">
+           <h1 class="display-10" style="text-align: center;">KUPOVINA NEKRETNINE</h1>
+           <hr class="my-4">
+           <form class="form my-2 my-lg-0">
+            <br/>
+            <div class="row">      
+              <br/>
+              <div class="col" style="text-align: center;">
+                <button type="button" class="btn btn-dark">
+                    <h3 class="display-10" style="text-align: center;">UKUPAN IZNOS GOTOVINA - {{nekretnina.cena}}</h3>
+                </button> 
+              </div>
+            </div>
+            <br/>
+            <div class="row">      
+                <br/>
+                <div class="col" style="text-align: center;">     
+                        <h3 class="display-10" style="text-align: center; margin-top: 2.5%;">Ukoliko se kupac odluci za kredit</h3>   
+                  </div>
+                <div class="col" style="text-align: center;">
+                  <button type="button" class="btn btn-dark">
+                      <h3 class="display-10" style="text-align: center;">20% ucesce - {{nekretnina.cena*20/100}}</h3>
+                  </button> 
+                </div>
+            </div>
+
+            
+            <br/>
+          </form>    
+        </div>
+        <div class="row">         
+          <div class="col" style="text-align: center;">
+            <button type="button" class="btn btn-success">
+                <h3 class="display-10" style="text-align: center;" (click)="kontaktiraj()">Kontaktiraj vlasnika</h3>
+            </button> 
+          </div>
+        </div>
+        <br/><br/>
+    </div>
+</div>
+
+<div *ngIf="kontakt == true">
+    <div class="container mt-4">
+      <div class="jumbotron" style="position: relative;background-image: url(http://localhost:4000//background2.jpg);">
+        <form class="form my-2 my-lg-0">
+          <div class="row">
+              <div class="col">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item active">Username primaoca</li>
+                  </ol>  
+              </div>
+          </div>  
+          <input [(ngModel)]="usernamePrimaoca" name="user" id="user" class="form-control mr-sm-2" type="text" placeholder="USERNAME" readonly>
+          <br/>
+
+          <div class="row" style="margin-bottom: 0%;">
+            <div class="col">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Naslov poruke</li>
+                </ol> 
+            </div>
+          </div>    
+
+          <div class="row" style="margin-bottom: 0%;">
+            <div class="col">
+                  <input [(ngModel)]="naslovPoruke" name="username" id="usernameField" class="form-control mr-sm-2" type="text" placeholder="USERNAME" readonly>            
+            </div>
+          </div>  
+
+          <div class="row">
+            <div class="col">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Sadrzaj poruke</li>
+                </ol>  
+            </div>
+          </div>            
+          <div class="row">
+            <div class="col"> 
+                <textarea [(ngModel)]="sadrzaj" class="form-control-textarea" id="cmessage" style="width: 100%;" required></textarea>
+            </div>
+          </div>
+
+          <button id="loginButton" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='kreirajPorukuIKonverzaciju()'>POSALJI</button>
+          <br/>
+          
+        </form>     
+      </div>
+  </div>
+</div>
+
+  

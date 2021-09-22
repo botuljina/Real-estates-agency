@@ -1,0 +1,89 @@
+
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+      <h3 style="text-align: center; color: white;">PREGLED KONVERZACIJE</h3>
+      <hr class="my-4">
+        <div class="row">
+          <div class="col" style="text-align: left;">MOJE PORUKE</div>
+          <div class="col" style="text-align: right;">PORUKE DRUGOG KORISNIKA</div>
+        </div>
+        <div class="row" *ngFor='let poruka of poruke;let i = index'>
+          <div class="col align-self-start"> 
+            <div class="list-group" *ngIf="poruka.jePonuda == 'false'" [style.text-align]="poruka.posiljalac == user.username ? 'left' : 'right'">
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">
+                    <span class="badge bg-success">procitano</span>
+                  </h5>
+                  <small>{{dateTimeFormats[i]}}</small>
+                </div>
+                <br/>
+                <p class="mb-1">
+                  {{poruka.sadrzaj}}
+                </p>
+              </a>
+            </div>
+            <div *ngIf="poruka.jePonuda == 'true' && this.user.username == poruka.posiljalac" class="card border-success mb-3" style="width: 100%;">
+              <div class="card-header">Moja ponuda</div>
+              <div class="card-body">
+                <p class="card-text">Postovani, moja ponuda za Vasu nekretninu iznosi: {{poruka.vrednostPonude}}</p>
+              </div>
+            </div>
+
+            <div *ngIf="poruka.jePonuda == 'true' && this.user.username != poruka.posiljalac" class="card border-warning mb-3" style="width: 100%;">
+              <div class="card-header" style="text-align: right;">Moja ponuda</div>
+              <div class="card-body">
+                <p class="card-text" style="text-align: right;">Postovani, moja ponuda za Vasu nekretninu iznosi: {{poruka.vrednostPonude}}</p>
+              </div>
+            </div>
+
+            <div *ngIf="poruka.jePonuda == 'prihvacena' && this.user.username == poruka.posiljalac" class="card text-white bg-success mb-3" style="width: 100%;">
+              <div class="card-header">PONUDA!!</div>
+              <div class="card-body">
+                <p class="card-text">Postovani, prihvatam ponudu koju ste mi poslali! Hvala na uspesnoj saradnji!</p>
+              </div>
+            </div>
+
+            <div *ngIf="poruka.jePonuda == 'prihvacena' && this.user.username != poruka.posiljalac" class="card text-white bg-success mb-3" style="width: 100%;">
+              <div class="card-header" style="text-align: right;">PONUDA!!</div>
+              <div class="card-body">
+                <p class="card-text" style="text-align: right;">Postovani, prihvatam ponudu koju ste mi poslali! Hvala na uspesnoj saradnji!</p>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      <br>
+    </div>
+  <!-- On rows -->
+    
+  </div>
+  <div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+        <form class="form my-2 my-lg-0">
+                   
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Sadrzaj poruke</li>
+                    </ol>  
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col"> 
+                    <textarea [(ngModel)]="sadrzaj" class="form-control-textarea" id="cmessage" style="width: 100%;" required></textarea>
+                </div>
+            </div>
+            <br/>
+            <button id="loginButton" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='posaljiNovuPoruku()'>POSALJI NOVU PORUKU</button>
+            <br/>
+            <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+                {{notification}}
+            </span>
+        </form>
+      
+    </div>
+</div>
+
+

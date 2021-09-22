@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-10" style="text-align: center;">MOJ NALOG - PREGLED</h1>
+       <hr class="my-4">
+       <img src="{{slika}}" style="height: 128px;width: 128px;text-align:center; display: block; margin: 0 auto; color: red;">
+       <br/>
+       <form class="form my-2 my-lg-0">
+        <input [(ngModel)]="ime" name="ime" id="ime" class="form-control mr-sm-2" type="text" placeholder="{{ime}}" >
+        <br/>
+        <input [(ngModel)]="prezime" name="prezime" id="prezime" class="form-control mr-sm-2" type="text" placeholder="PREZIME" >
+        <br/>
+        <input [(ngModel)]="username" name="username" id="username" class="form-control mr-sm-2" type="text" placeholder="USERNAME" >
+        <br/>
+        <input [(ngModel)]="password"  name="password" id="password" class="form-control mr-sm-1" type="text" placeholder="PASSWORD" readonly>
+        <br/>
+        <input name="slikaNova" type="file" class="form-control" id="slikaNova" (change)="appendImageToSlikaProp($event.target.files)">
+        <br/>
+        <input [(ngModel)]='mail' name="mail" id="mail" class="form-control mr-sm-1" type="text" placeholder="mail" >
+        <br/>
+        <input [(ngModel)]="grad"  name="grad" id="grad" class="form-control mr-sm-1" type="text" placeholder="GRAD" >
+        <br/>
+        <input [(ngModel)]="drzava" name="drzava" id="drzava" class="form-control mr-sm-1" type="text" placeholder="DRZAVA" >
+        <br/>
+        <button id="promeniPodatke" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)="update()">Promeni podatke</button>
+        <br/>
+        <span style=" text-align:center; display: block; margin: 0 auto; color: green;">
+            {{poruka}}
+        </span>
+      </form>
+     
+    </div>
+  </div>

@@ -1,0 +1,40 @@
+
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+      <h3 style="text-align: center; color: white;">SPISAK OGLASENIH NEKRETNINA</h3>
+      <hr class="my-4">
+  
+      <table class="table table-hover" style="text-align: center;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">NAZIV</th>
+            <th scope="col">USLUGA</th>
+            <th scope="col">CENA</th>
+            <th scope="col">STANJE</th>
+            <th scope="col">OPCIJE</th>
+          </tr>
+        </thead>
+    
+          <tbody>
+            <tr class="table-active" *ngFor="let nekretnina of nekretnine;let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{nekretnina.naziv}}</td>
+              <td>{{nekretnina.usluga}}</td>
+              <td>{{nekretnina.cena}}</td>
+              <td>{{nekretnina.stanje}}</td>
+              <td>
+                <button type="button" class="btn btn-info" (click)="azurirajNekretninu(nekretnina.id)">AZURIRAJ</button>
+                <button type="button" class="btn btn-light">DETALJI</button>
+              </td>
+            </tr>  
+          </tbody>
+       
+        
+      </table>
+      <br>
+     
+    </div>
+  <!-- On rows -->
+    
+  </div>

@@ -1,0 +1,43 @@
+
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+        <h3 style="text-align: center; color: white;">SPISAK SVIH KONVERZACIJA</h3>
+        <hr class="my-4">
+        <table class="table table-hover" style="text-align: center;">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">NASLOV</th>
+                <th scope="col">PRODAVAC</th>
+                <th scope="col">KUPAC</th>
+                <th scope="col">STANJE</th>
+                <th scope="col">OPCIJE</th>
+            </tr>
+            </thead>
+        
+            <tbody>
+                <tr class="table-active" *ngFor="let chat of konverzacije;let i = index">
+                <th scope="row">{{i}}</th>
+                <td>{{chat.naslov}}</td>
+                <td>{{chat.prodavac}}</td>
+                <td>{{chat.kupac}}</td>
+                <td>{{chat.stanje}}</td>
+                <td>
+                    <div class="row">
+                    <div class="col-sm" >
+                        <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="pregled(chat.id)">PREGLED</button>
+                    </div>
+                    <div class="col-sm" >
+                        <button type="button" style="width: 100%; margin-left: 0; margin-right: 0;" class="btn btn-outline-light" (click)="izbaciIzArhive(chat.id)" [disabled]="chat.stanje=='blok'">IZBACI IZ ARHIVE</button>
+                    </div>       
+                    </div>   
+                
+                </td>
+                </tr>  
+            </tbody>
+        
+            
+        </table>
+        <br>
+    </div>
+</div>

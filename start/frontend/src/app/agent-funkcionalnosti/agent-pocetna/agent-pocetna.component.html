@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-5" style="text-align: center;">ANALIZA PO CENI</h1>
+       <h3 class="display-5" style="text-align: center;">[RENTA] / [PRODAJA]</h3>
+       <div class="row justify-content-center">
+        <div class="col-6">
+            <p-chart type="bar" [options]="options" [data]="data1" width="1000" height="300"></p-chart>
+        </div>
+        <div class="col-6">
+            <p-chart type="bar" [options]="options" [data]="data2" width="1000" height="300"></p-chart>
+        </div>
+    </div>
+     
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-5" style="text-align: center;">DODATNA ANALIZA</h1>
+       <h3 class="display-5" style="text-align: center;">[GRADOVI] / [IZDAVANJE - PRODAJA]</h3>
+       <div class="row justify-content-center">
+            <div class="col-6">
+                <p-chart type="bar" [options]="options" [data]="data3" width="1000" height="300"></p-chart>
+            </div>
+            <div class="col-6">
+                <p-chart type="bar" [options]="options" [data]="data4" width="1000" height="300"></p-chart>
+            </div>
+        </div>
+     
+    </div>
+</div>
+
+

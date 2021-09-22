@@ -1,0 +1,47 @@
+
+<div class="container mt-4" *ngIf='korisnici != null'>
+    <div class="jumbotron" style="position: relative;">
+      <h3 style="text-align: center; color: white;">SPISAK SVIH KORISNIKA U SISTEMU</h3>
+      <hr class="my-4">
+        <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+            {{poruka}}
+        </span>
+        <span style="font-size: large; text-align:center; display: block; margin: 0 auto; color: green;">
+            {{porukaSucces}}
+        </span>
+  
+      <table class="table table-hover" style="text-align: center;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">TYPE</th>
+            <th scope="col">ODOBREN</th>
+          </tr>
+        </thead>
+    
+          <tbody>
+            <tr class="table-active" *ngFor="let korisnik of korisnici;let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{korisnik.username}}</td>
+              <td>{{korisnik.type}}</td>
+              <td>{{korisnik.odobren}}
+                
+              </td>
+              <td>
+                <button type="button" class="btn btn-info" (click)="azuriraj(korisnik.username)">AZURIRAJ</button>
+                <button type="button" class="btn btn-light"(click)="prihvati(korisnik.username)">ODOBRI</button>
+                <button type="button" class="btn btn-dark" (click)="odbij(korisnik.username)">ODBIJ</button>
+                <button type="button" class="btn btn-danger" (click)="obrisi(korisnik.username)">UKLONI</button>
+              </td>
+            </tr>  
+          </tbody>
+       
+        
+      </table>
+      <br>
+    </div>
+  <!-- On rows -->
+    
+  </div>
+

@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <div class="jumbotron" style="position: relative;background-image: url(http://localhost:4000//background.png);">
+  <br/> 
+  <br/> 
+  <br/>
+  <br/>
+    <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="jumbotron" style="position: relative;">
+     <h1 class="display-10" style="text-align: center;">PRETRAGA</h1>
+     <hr class="my-4">
+     <form class="form my-2 my-lg-0">
+      <div class="row">      
+        <div class="col">
+          <input [(ngModel)]="naziv" name="naziv" id="naziv" class="form-control" type="text" placeholder="NAZIV" >
+          <br/>
+        </div>
+        <div class="col">
+          <input [(ngModel)]="grad" name="grad" id="grad" class="form-control" type="text" placeholder="GRAD" >
+        </div>
+      </div>
+      <div class="row">      
+        <br/>
+        <div class="col">
+          <input [(ngModel)]="cena" name="cena" id="cena" class="form-control mr-sm-2" type="number" placeholder="CENA" >
+        </div>
+        <div class="col">
+          <input [(ngModel)]="cenaMax" name="cena" id="cena" class="form-control mr-sm-2" type="number" placeholder="CENA" >
+        </div>  
+      </div>
+      <br/>
+      <button id="pretragaButton" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='pretraga()'>LOGIN</button>
+      <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+          {{poruka}}
+      </span>
+    </form>
+   
+  </div>
+</div>
+
+<br/>
+<br/>
+<div class="container">
+    <div class="row" >
+      <div class="col-sm-4" *ngFor="let nekretnina of nekretnine;let i = index">
+          <div class="card mb-3">
+            <h3 class="card-header" style="text-align: center;">{{nekretnina.naziv}}</h3>
+            <img style="height: 200px; width: 100%; display: block;" src="{{nekretnina.galerija[0]}}" alt="Card image">
+            <div class="card-body">
+              <p class="card-text">Grad - {{nekretnina.grad}} | Opstina - {{nekretnina.opstina}} | Ulica - {{nekretnina.ulica}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Tip - {{nekretnina.tip}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='kuca'">Broj spratova kuce - {{nekretnina.brojSpratova}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='kuca'">Broj sprata stana - xxx</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='zgrada'">Broj spratova zgrade - {{nekretnina.brojSpratova}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.tip=='zgrada'">Broj sprata stana - {{nekretnina.sprat}}</li>
+              <li class="list-group-item">Kvadratura - {{nekretnina.kvadratura}} m2</li>
+              <li class="list-group-item">Broj soba - {{nekretnina.brojSoba}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.jeNamestena==true">
+                Namestena - 
+                <span class="badge bg-success" style="color:white">DA</span>
+              </li>
+              <li class="list-group-item" *ngIf="nekretnina.jeNamestena==false">
+                Namestena - 
+                <span class="badge bg-danger" style="color:white">NE</span>
+              </li>
+              <li class="list-group-item">Usluga - {{nekretnina.usluga}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.usluga=='prodaja'">Cena prodaja - {{nekretnina.cena}}</li>
+              <li class="list-group-item" *ngIf="nekretnina.usluga=='rent'">Cena za 24h - {{nekretnina.cena}}</li>
+            </ul>
+            <div class="card-body" style="text-align: center;">
+              <a href="https://www.medicalife.rs/" class="card-link" >Vlasnik - {{nekretnina.vlasnik}}</a>
+            </div>
+            <div class="card-footer text-muted" style="text-align: center;">
+              <button type="button" *ngIf="this.user != null" class="btn btn-outline-success" (click)="detalji(nekretnina.id)">DETALJI NEKRETNINE</button>
+            </div>
+          </div>
+          
+      </div>    
+    </div>
+</div>
+ 
+  

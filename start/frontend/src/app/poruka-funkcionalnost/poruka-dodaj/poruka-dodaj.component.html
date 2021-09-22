@@ -1,0 +1,65 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <form class="form my-2 my-lg-0">
+        <div class="row">
+            <div class="col">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Username primaoca</li>
+                </ol>  
+            </div>
+        </div>  
+        <input [(ngModel)]="usernamePrimaoca" name="username" id="usernameField" class="form-control mr-sm-2" type="text" placeholder="USERNAME" [readonly]="nekretninePrimaoca.length != 0">
+        <br/>
+        <button id="loginButton" *ngIf="nekretninePrimaoca.length == 0"  type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='slanjeKorisniku()'>POSALJI</button>
+        <br/>
+        <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+            {{notification}}
+        </span>
+      </form>
+      
+      <div *ngIf = "nekretninePrimaoca.length != 0">
+        <form class="form my-2 my-lg-0">
+            
+               
+            <div class="row" style="margin-bottom: 0%;">
+                <div class="col">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Naslov poruke</li>
+                    </ol> 
+                </div>
+            </div>    
+            <div class="row" style="margin-top: 0%;">
+                <div class="col">
+                    <select id ="nazivId" name="usluga" class="form-select" aria-label="Default select example" style="width:100%;height:100%">
+                        <option *ngFor="let nekretnina of nekretninePrimaoca" 
+                        [value]="nekretnina.id">
+                      {{nekretnina.naziv}}
+                    </option>
+                    
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Sadrzaj poruke</li>
+                    </ol>  
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col"> 
+                    <textarea [(ngModel)]="sadrzaj" class="form-control-textarea" id="cmessage" style="width: 100%;" required></textarea>
+                </div>
+            </div>
+            <br/>
+            <button id="loginButto" type="submit" class="btn btn-warning" style=" display: block; margin: 0 auto;" (click)='kreirajPorukuIKonverzaciju()'>POSALJI PORUKU</button>
+            <br/>
+            <span style=" text-align:center; display: block; margin: 0 auto; color: red;">
+                {{notification}}
+            </span>
+          </form>
+      </div>
+    </div>
+</div>
+

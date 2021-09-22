@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Website Title -->
+    <title>Pia projekat</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.css">
+
+	
+</head>
+<!-- Preloader -->
+<div class="spinner-wrapper">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+<!-- end of preloader -->
+
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar" style="background-color: #1D1E22">
+    <a class="navbar-brand" href="index.html" style="background-color: #1D1E22">
+        <img src="http://localhost:4000//logo.png" style="width: 100px;height: 35px;" (click)='pocetna()'>
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01" style="background-color: #1D1E22">
+      <ul class="navbar-nav mr-auto">
+
+        <a id="nekretnine-pregled"><button type="button" class="btn btn-outline-primary" (click)='pocetna()'>Početna strana</button></a>
+        <div *ngIf="this.user != null">
+          <div *ngIf="this.user.type == 'admin' || this.user.type == 'agent'">
+            <a id="nekretnine-pregled222"><button type="button" routerLink = 'prodaja-iznajmljivanje-prihod' class="btn btn-outline-primary">Prihodi</button></a>
+          </div>
+        </div>
+        <a id="nekretnine-pregled"><button type="button" routerLink = 'moje-nekretnine' class="btn btn-outline-primary" [disabled]="message==true">Moje nekretnine</button></a>
+        <a id="moj-nalog"><button type="button" routerLink = 'moj-nalog' class="btn btn-outline-primary" [disabled]="message==true">Moj nalog</button></a>
+        <a id="moj-nalog"><button type="button" routerLink = 'poruke' class="btn btn-outline-primary" [disabled]="message==true">Poruke</button></a>
+        <a id="change-password"><button type="button" routerLink = 'change-password' class="btn btn-outline-primary" [disabled]="message==true">Promeni lozinku</button></a>
+        <div *ngIf="this.user != null">
+          <div *ngIf="this.user.type == 'admin'">
+            <a id="nekretnine-pregled"><button type="button" routerLink = 'korisnici-pregled' class="btn btn-outline-primary">Korisnici pregled</button></a>
+          </div>
+        </div>
+        <a id="register"><button type="button" routerLink = 'register' class="btn btn-outline-danger">REGISTRUJ SE!</button></a>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">      
+        <button id="loginButton" routerLink = 'login' type="button" class="btn btn-warning" style="margin-right: 5px;" [disabled]="message==false">  
+                LOGIN                   
+        </button>
+        <button id="logoutButton" type="button" class="btn btn-danger" style="margin-right: 5px;" [disabled]="message==true" (click)='logout()'>LOGOUT</button>
+      </form>
+    </div>
+</nav>
+<!-- NAVBAR END -->

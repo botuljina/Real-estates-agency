@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <div class="jumbotron" style="position: relative;">
+       <h1 class="display-5" style="text-align: center;">PREGLED KORISNIKA</h1>
+       <hr class="my-4">
+       <form class="form my-2 my-lg-0">
+        <div class="row">      
+            <br/>
+            <div class="col">
+                <button id="changePregledSvihKorisnika" type="submit" class="btn btn-success" style="width:50%; display: block; margin: 0 auto;" (click)='changepregledKorisnika()'>PREGLED SVIH KORISNIKA</button>
+            </div>
+            <div class="col">
+                <button id="changepregledKorisnika" type="submit" class="btn btn-warning" style="width:50%; display: block; margin: 0 auto;" (click)="changedodajKorisnika()">DODAJ NOVOG KORISNIKA</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<div *ngIf="dodajKorisnika==true">
+    <app-korisnici-dodaj></app-korisnici-dodaj>
+</div>
+
+<div *ngIf="pregledSvihKorisinika==true">
+    <app-admin-korisnici-crud></app-admin-korisnici-crud>
+</div>
